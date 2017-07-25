@@ -14,7 +14,7 @@ def binary_search(input_array, value):
     
     endl=len(input_array)-1
     startl=0
-    i=(endl-startl+1)/2
+    i=(endl-startl)/2
     if input_array[i] == value: 
         return i   
           
