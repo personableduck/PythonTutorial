@@ -15,10 +15,11 @@ def binary_search(input_array, value):
     endl=len(input_array)-1
     startl=0
     i=(endl-startl+1)/2
-    
+    if input_array[i] == value: 
+        return i   
+          
     while (i != 0 and i != endl):   
-        if input_array[i] == value: 
-            return i
+ 
         if input_array[i] < value: 
             startl=i
             if (endl-i+1)/2 % 2 == 0:
@@ -26,13 +27,11 @@ def binary_search(input_array, value):
             else:
                 i=(endl-i+1)/2 + startl
         else:
-            if (i-startl+1)/2 % 2 == 0:
-                i=(i-startl+1)/2 + startl-1
-            else:
-                i=(i-startl+1)/2 + startl
+            i/=2 
+        if input_array[i] == value: 
+            return i
         
     return -1
-    
 
 test_list = [1,3,9,11,15,19,29]
 test_val1 = 25
