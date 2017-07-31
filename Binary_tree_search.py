@@ -12,13 +12,13 @@ class BinaryTree(object):
         """Return True if the value
         is in the tree, return
         False otherwise."""
-        return self.preorder_search(tree.root, find_val)
+        return self.preorder_search(self.root, find_val)
 
     def print_tree(self):
         """Print out all tree nodes
         as they are visited in
         a pre-order traversal."""
-        return self.preorder_print(tree.root, "")[:-1]
+        return self.preorder_print(self.root, "")[:-1]
 
     def preorder_search(self, start, find_val):
         """Helper method - use this to create a 
