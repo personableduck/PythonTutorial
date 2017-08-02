@@ -1,0 +1,66 @@
+explanations.txt
+
+-------------------------------------------------------------------------------------
+
+Question1:
+
+
+This is simple problem to find substring, and anagram substring also included.
+
+For Python, have a good funtion to find subset.
+
+ex) sample.find(sub)
+
+This complexity would be O(Log N) because it will use fast search algorithm.
+
+So, First case considering no anagram substring. If find substring return True.
+
+Second, Find anagram using reverse string. If find anagram  substring return True.
+
+Third, neither find substing return False.
+
+Total complexity would be O(Log 2N) because using two time search.
+
+-------------------------------------------------------------------------------------
+
+Question2:
+
+
+To find palindromic substring, I can compare my origin sting and reversed sting and find repeatition range.
+
+Initialize my reverse sting.
+
+And I used for loop to search each character using index.
+
+Why I used for loop index. Because the problem is find the longest palindromic substring, 
+
+reversed string's first index will be origin string's last element. If I find some palindromic substring through the method,
+it has high probability become the longest one.
+
+Ex)
+
+"abbba" index[0]=a
+
+"abbba" index[0]=a
+
+maching => find longest one."abbba"
+
+And to progress my algorithm I used slice string method.
+
+each loop step will slice my reversed sting.
+
+Ex)
+
+"abbba" -> "bbba" -> "bba"
+
+slice string is very useful and fast.
+
+To prevent my algorithm high complexity that it can search whole set of charecter. O(n^2), 
+I used break function compare my founded palindromic substring's length 
+and another founded palindromic substring's length.
+
+Using those method, I can build fast algorithm.
+
+
+
+
