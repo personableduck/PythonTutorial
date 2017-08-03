@@ -11,7 +11,7 @@ For example: if s = "udacity" and t = "ad", then the function returns True.
 Your function definition should look like: question1(s, t) and return a boolean True or False.
 """
 
-def question_1(str_word, sub):
+def question1(str_word, sub):
     
     if str_word.find(sub) != -1:
         return True
@@ -23,16 +23,16 @@ def question_1(str_word, sub):
     
 s="udacity"
 t="ad"
-print question_1(s,t)
+print question1(s,t)
 
 s="aaaacdddity"
 t="ad"
-print question_1(s,t)
+print question1(s,t)
 
 s="Helloworld"
 t="dlro"
-print question_1(s,t)
+print question1(s,t)
 
 s="Helloworld"
 t="dlrol"
-print question_1(s,t)
+print question1(s,t)
