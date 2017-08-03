@@ -57,19 +57,35 @@ def right_tree(T,current_node):
 # Function to find LCA of n1 and n2. The function assumes
 # that both n1 and n2 are present in BST
 def question4(T,r, n1, n2):
-     
+    """
+    :type T: 2D matirix
+    :type r: int
+    :type n1: int
+    :type n2: int
+    :rtype: int
+    """
+    
     # Base Case
     if r is None:
         return None
-    # If both n1 and n2 are smaller than root, then LCA
-    # lies in left
-    if(r > n1 and r > n2):
-        return question4(T,left_tree(T,r), n1, n2)
- 
-    # If both n1 and n2 are greater than root, then LCA
-    # lies in right 
-    if(r < n1 and r < n2):
-        return question4(T,right_tree(T,r), n1, n2)
+
+    while (r < n1 or r > n2):
+        # If both n1 and n2 are smaller than root, then the functuntion lies in left again
+        if(r > n1 and r > n2):
+            r= left_tree(T,r)
+        # If both n1 and n2 are greater than root, then functuntion lies in right again    
+        if(r < n1 and r < n2):
+            r= right_tree(T,r)
+    
+#==============================================================================
+#     # If both n1 and n2 are smaller than root, then the functuntion lies in left again
+#     if(r > n1 and r > n2):
+#         return question4(T,left_tree(T,r), n1, n2)
+#  
+#     # If both n1 and n2 are greater than root, then functuntion lies in right again
+#     if(r < n1 and r < n2):
+#         return question4(T,right_tree(T,r), n1, n2)
+#==============================================================================
  
     return r
 
@@ -104,5 +120,5 @@ print question4([[0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 1, 0, 0, 0, 1],
                  [0, 0, 0, 0, 0, 0, 0]],
                   5,
-                  6,
-                  1)
+                  1,
+                  6)

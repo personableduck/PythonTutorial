@@ -13,79 +13,177 @@ You should copy/paste the Node class below to use as a representation of a node 
 Return the value of the node at that position.
 """
 
-class Node(object):
-  def __init__(self, data):
-    self.data = data
-    self.next = None
+#==============================================================================
+# #Linked List Class
+# class Node(object):
+#   def __init__(self, data):
+#     self.data = data
+#     self.next = None
+# 
+# def question5(first_node,end_search):
+#     """
+#     :type first_node: liked list first node
+#     :type end_search: int
+#     :rtype: int
+#     """
+#     #base arrange data 
+#     data_storage=[]
+#     #change linked list to array data
+#     readNode(node1,data_storage)
+#     
+#     #error case detector
+#     if len(data_storage) - end_search < 0:
+#         return False
+#     
+#     #simply index my location and return
+#     return data_storage[len(data_storage) - end_search]
+# 
+# #return Linked List to array data    
+# def readNode(node,data_storage):
+#     data_storage.append(node.data)
+#     if node.next != None:
+#         readNode(node.next,data_storage)
+#==============================================================================
 
-def question5(first_node,end_search):
-    data_storage=[]
-    readNode(node1,data_storage)
+# A complete working Python program to find length of a
+# Linked List iteratively
+ 
+# Node class
+class Node:
+    # Function to initialise the node object
+    def __init__(self, data):
+        self.data = data # Assign data
+        self.next = None # Initialize next as null
+ 
+ 
+# Linked List class contains a Node object
+class LinkedList:
+ 
+    # Function to initialize head
+    def __init__(self):
+        self.head = None
+ 
+    # This function is in LinkedList class. It inserts
+    # a new node at the beginning of Linked List.
+    def push(self, new_data):
+        # 1 & 2: Allocate the Node &
+        # Put in the data
+        new_node = Node(new_data) 
+        # 3. Make next of new Node as head
+        new_node.next = self.head 
+        # 4. Move the head to point to new Node
+        self.head = new_node
+        
+    def add(self, new_data):
+
+        new_node = Node(new_data) 
+        # 3. Make next of new Node as head
+        new_node.next = new_node
+        # 4. Move the head to point to new Node
+        self.head = new_node
+ 
+ 
+    # This function counts number of nodes in Linked List
+    # iteratively, given 'node' as starting node.
+    def getCount(self):
+        temp = self.head # Initialise temp
+        count = 0 # Initialise count
+ 
+        # Loop while end of linked list is not reached
+        while (temp):
+            count += 1
+            temp = temp.next
+        return count
+
+def question5(ll,end_search):
+    """
+    :type first_node: liked list first node
+    :type end_search: int
+    :rtype: int
+    """
     
-    return data_storage[len(data_storage) - end_search]
+    #Count my linked list node
+    length_ll=ll.getCount()
     
-def readNode(node,data_storage):
-    data_storage.append(node.data)
-    if node.next != None:
-        readNode(node.next,data_storage)
+    #error case detector
+    if length_ll - end_search < 0:
+        return False 
+    
+    #find my index location
+    node_location= length_ll - end_search
+    
+    #Call first node
+    current=ll.head
+    
+    #find linked list postion using index
+    for i in range(node_location):
+        current=current.next
 
+    return current.data    
+    
 
     
-print "----test1----"  
+    
+# Code execution starts here
 
-node1 = Node(11)
-node2 = Node(12)
-node3 = Node(13)
-node4 = Node(14)
-node5 = Node(15)
+print ""
+print "Qestion5"
+print ""
+    
+print "----Q5)test1----"
 
-node1.next = node2
-node2.next = node3
-node3.next = node4
-node4.next = node5
+"""
+Add a node at the front: 
+The new node is always added before the head of the given Linked List. 
+And newly added node becomes the new head of the Linked List. 
+For example if the given Linked List is 10->15->20->25 and we add an item 5 at the front, 
+then the Linked List becomes 5->10->15->20->25. 
+Let us call the function that adds at the front of the list is push(). 
+The push() must receive a pointer to the head pointer, 
+because push must change the head pointer to point to the new node
+"""
 
-print question5(node1, 3)
+llist=LinkedList()
+llist.push(11)
+llist.push(12)
+llist.push(13)
+llist.push(14)
+llist.push(15)
 
-print "----test2----"  
+print question5(llist, 3)    
+    
+print "----Q5)test2----" 
 
-node1 = Node(23)
-node2 = Node(12)
-node3 = Node(13)
-node4 = Node(2)
-node5 = Node(4)
-node6 = Node(5)
-node7 = Node(100)
+llist=LinkedList()
+llist.push(23)
+llist.push(12)
+llist.push(13)
+llist.push(2)
+llist.push(4)
+llist.push(5)
+llist.push(100)
 
-node1.next = node2
-node2.next = node3
-node3.next = node4
-node4.next = node5
-node5.next = node6
-node6.next = node7
+print question5(llist, 2) 
 
-print question5(node1, 6)
+print "----Q5)test3----"  
 
-print "----test3----"  
+llist=LinkedList()
+llist.push(55)
+llist.push(52)
+llist.push(36)
+llist.push(21)
+llist.push(41)
+llist.push(52)
+llist.push(120)
+llist.push(114)
+llist.push(150)
+llist.push(610)
 
-node1 = Node(5)
-node2 = Node(52)
-node3 = Node(36)
-node4 = Node(21)
-node5 = Node(41)
-node6 = Node(52)
-node7 = Node(120)
-node8 = Node(114)
-node9 = Node(150)
-node10 = Node(610)
+print question5(llist, 4)
 
-node1.next = node2
-node2.next = node3
-node3.next = node4
-node4.next = node5
-node5.next = node6
-node6.next = node7
-node7.next = node8
-node8.next = node9
-node9.next = node10
+print "----Q5)test4----"  
 
-print question5(node1, 4)
+llist=LinkedList()
+llist.push(5)    
+    
+print question5(llist, 4)

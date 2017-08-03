@@ -1,8 +1,5 @@
-explanations.txt
 
--------------------------------------------------------------------------------------
-
-Question1:
+**Question1:
 
 
 This is simple problem to find substring, and anagram substring also included.
@@ -11,19 +8,22 @@ For Python, have a good funtion to find subset.
 
 ex) sample.find(sub)
 
-This complexity would be O(Log N) because it will use fast search algorithm.
+Considering base case, if sub string is None then return False 
+if sub string is bigger than origin string return False
 
-So, First case considering no anagram substring. If find substring return True.
+Using slice window method.
 
-Second, Find anagram using reverse string. If find anagram  substring return True.
+Search each character of substiring from original string.
+If I find the element of character from original string, I have to delete the chracter to avoid repeat use.
 
-Third, neither find substing return False.
+.find() have time complexity is O(N) on average, O(NM) worst case (N being the length of the longer string, M, the shorter string you search for).
 
-Total complexity would be O(Log 2N) because using two time search.
+There for total time complexity is O(len(t)*s) because I use loop for sub stiring character and inside the loop I used .find() funtion on origin string set. Thus, it would be len(t)*s.
 
--------------------------------------------------------------------------------------
+space complexity would be O(1) requires 2 units of space for the parameters and 1 for the local variable, and this never changes
 
-Question2:
+
+**Question2:
 
 
 To find palindromic substring, I can compare my origin sting and reversed sting and find repeatition range.
@@ -61,9 +61,12 @@ and another founded palindromic substring's length.
 
 Using those method, I can build fast algorithm.
 
--------------------------------------------------------------------------------------
+This complexity would be O(N^2), there is nested loop, so multiple the runtimes.
 
-Question3:
+space complexity would be O(N), N is for length of input stirng.
+
+
+**Question3:
 
 Given a connected and undirected graph, a spanning tree of that graph is a subgraph that is a tree and connects all the vertices together. A single graph can have many different spanning trees. A minimum spanning tree (MST) or minimum weight spanning tree for a weighted, connected and undirected graph is a spanning tree with weight less than or equal to the weight of every other spanning tree. The weight of a spanning tree is the sum of weights given to each edge of the spanning tree.
 
@@ -89,9 +92,11 @@ If including this edge does't cause cycle, include it in result and increment th
 -Since including this edge results in cycle, discard it.
 -Pick edge: No cycle is formed, include it.
 
-----------------------------------------------------------------------------------------
+Time Complexity: O(ElogE) or O(ElogV). Sorting of edges takes O(ELogE) time. After sorting, we iterate through all edges and apply find-union algorithm. The find and union operations can take atmost O(LogV) time. So overall complexity is O(ELogE + ELogV) time. The value of E can be atmost O(V2), so O(LogV) are O(LogE) same. Therefore, overall time complexity is O(ElogE) or O(ElogV)
 
-Question4:
+Space Complexity: would be O(2*V) because I store my data to 2 dictionaries. 
+
+**Question4:
 
 Given values of two values n1 and n2 in a Binary Search Tree, find the Lowest Common Ancestor (LCA). You may assume that both the values exist in the tree.
 
@@ -101,7 +106,7 @@ The LCA of n1 and n2 in T is the shared ancestor of n1 and n2 that is located fa
 
 If we are given a BST where every node has parent pointer, then LCA can be easily determined by traversing up using parent pointer and printing the first intersecting node.
 
-We can solve this problem using BST properties. We can recursively traverse the BST from root. The main idea of the solution is, while traversing from top to bottom, the first node n we encounter with value between n1 and n2, i.e., n1 < n < n2 or same as one of the n1 or n2, is LCA of n1 and n2 (assuming that n1 < n2). So just recursively traverse the BST in, if node¡¯s value is greater than both n1 and n2 then our LCA lies in left side of the node, if it¡¯s is smaller than both n1 and n2, then LCA lies on right side. Otherwise root is LCA (assuming that both n1 and n2 are present in BST)
+We can solve this problem using BST properties. We can loop (recursively) traverse the BST from root. The main idea of the solution is, while traversing from top to bottom, the first node n we encounter with value between n1 and n2, i.e., n1 < n < n2 or same as one of the n1 or n2, is LCA of n1 and n2 (assuming that n1 < n2). So just recursively traverse the BST in, if node¡¯s value is greater than both n1 and n2 then our LCA lies in left side of the node, if it¡¯s is smaller than both n1 and n2, then LCA lies on right side. Otherwise root is LCA (assuming that both n1 and n2 are present in BST)
 
 Make a base Case if root is None: return None value.
 
@@ -110,17 +115,22 @@ If both n1 and n2 are greater than root, then LCA lies in right.
 
 For search left tree or right tree. I used binary search method. it started middle point and move to left or right to find each left tree or right tree child.
 
-----------------------------------------------------------------------------------------
+Time complexity of above solution is average O(h) where h is height of tree. And worst case O(N) or O(2*h) for Non-balanced tree, I have to search entire node. N is node and it could be h*2 because each root can have 2 children nodes.
 
-Question5:
+Space complexity is requires O(h) or O(N) extra space in function call stack for recursive function calls. 
 
-Like arrays, Linked List is a linear data structure. Unlike arrays, linked list elements are not stored at contiguous location; the elements are linked using pointers.
+**Question5:
 
-Thus, Linke list is difficult to search element using index.
+I applied Add a node at the front: The new node is always added before the head of the given Linked List. And newly added node becomes the new head of the Linked List. For example if the given Linked List is 10->15->20->25 and we add an item 5 at the front, 
+then the Linked List becomes 5->10->15->20->25. Let us call the function that adds at the front of the list is push(). 
+The push() must receive a pointer to the head pointer, because push must change the head pointer to point to the new node
 
-To simply solve this problem.
+I made getCount funtion to find my linked list length using while loop.
 
-I store Linked List data to array. Using recursive function.
-And simply using index number to find m is the "mth number from the end". by length of linked list minus mth number from the end.
+Using my count information find my indexed linked list value.
 
+Time complexity is Average is O(N+C), N is my liked list length and C is my index number for result location.
+I have to rpeat linked list by N. and after that I have to repeat again to find indexed liked list.
+
+Space complexity is O(1), because I used Singly-Linked List.
 
